@@ -21,69 +21,91 @@ Contacts::Contacts()
 Contacts::~Contacts()
 {
 }
-/*
-void	My_book::add_first_name()
-{
-	std::string = line;
-	std::cout << "\x1b[95;1mFirst_name -> \x1b[0m";
-	std::getline(std::cin, line);
-	my_book[count]._first_name = line;
-}
-void	add_last_name(My_book my_book[8], int count);
-void	add_nickname(My_book my_book[8], int count);
-void	add_login(My_book my_book[8], int count);
-void	add_postal_address(My_book my_book[8], int count);
-void	add_email_address(My_book my_book[8], int count);
-void	add_phone_number(My_book my_book[8], int count);
-void	add_birthday_date(My_book my_book[8], int count);
-void	add_favorite_meal(My_book my_book[8], int count);
-void	add_underwear_color(My_book my_book[8], int count);
-void	add_darkest_secret(My_book my_book[8], int count);
-*/
 
 void	Contacts::print_search()
 {
 	size_t	len;
 
-	if ((len = this->_first_name.length()) <= 8)
+	if ((len = this->_first_name.length()) <= 10)
 	{
-		for (size_t i = 0; i < (8 - len); i++)
+		for (size_t i = 0; i < (10 - len); i++)
 			std::cout << " ";
-		std::cout << this->_first_name << "|";
+		std::cout << this->_first_name << "\x1b[32;1m|\x1b[0m";
 	}
 	else
 	{
-		for (size_t i = 0; i < 8; i++)
+		for (size_t i = 0; i < 9; i++)
 			std::cout << this->_first_name[i];
-		std::cout << ".|";
+		std::cout << "\x1b[32;1m.|\x1b[0m";
 	}
-	if ((len = this->_last_name.length()) <= 8)
+	if ((len = this->_last_name.length()) <= 10)
 	{
-		for (size_t i = 0; i < (8 - len); i++)
+		for (size_t i = 0; i < (10 - len); i++)
 			std::cout << " ";
-		std::cout << this->_last_name << "|";
+		std::cout << this->_last_name << "\x1b[32;1m|\x1b[0m";
 	}
 	else
 	{
-		for (size_t i = 0; i < 8; i++)
+		for (size_t i = 0; i < 9; i++)
 			std::cout << this->_last_name[i];
-		std::cout << ".|";
+		std::cout << "\x1b[32;1m.|\x1b[0m";
 	}
-	if ((len = this->_nickname.length()) <= 8)
+	if ((len = this->_nickname.length()) <= 10)
 	{
-		for (size_t i = 0; i < (8 - len); i++)
+		for (size_t i = 0; i < (10 - len); i++)
 			std::cout << " ";
-		std::cout << this->_nickname << "|";
+		std::cout << this->_nickname << "\x1b[32;1m|\x1b[0m";
 	}
 	else
 	{
-		for (size_t i = 0; i < 8; i++)
+		for (size_t i = 0; i < 9; i++)
 			std::cout << this->_nickname[i];
-		std::cout << ".|";
+		std::cout << "\x1b[32;1m.|\x1b[0m";
 	}
 }
 
-void	My_book::search_in_mybook(Contacts *contacts)
+void	Contacts::add_contact()
+{
+	std::cout << "\x1b[95;1mFirst_name -> \x1b[0m";
+	std::getline(std::cin, this->_first_name);
+	std::cout << "\x1b[95;1mLast_name -> \x1b[0m";
+	std::getline(std::cin, this->_last_name);
+	std::cout << "\x1b[95;1mNickname -> \x1b[0m";
+	std::getline(std::cin, this->_nickname);
+	std::cout << "\x1b[95;1mLogin -> \x1b[0m";
+	std::getline(std::cin, this->_login);
+	std::cout << "\x1b[95;1mPostal_address -> \x1b[0m";
+	std::getline(std::cin, this->_postal_address);
+	std::cout << "\x1b[95;1mEmail_address -> \x1b[0m";
+	std::getline(std::cin, this->_email_address);
+	std::cout << "\x1b[95;1mPhone_number -> \x1b[0m";
+	std::getline(std::cin, this->_phone_number);
+	std::cout << "\x1b[95;1mBirthday_date -> \x1b[0m";
+	std::getline(std::cin, this->_birthday_date);
+	std::cout << "\x1b[95;1mFavorite_meal -> \x1b[0m";
+	std::getline(std::cin, this->_favorite_meal);
+	std::cout << "\x1b[95;1mUnderwear_color -> \x1b[0m";
+	std::getline(std::cin, this->_underwear_color);
+	std::cout << "\x1b[95;1mDarkest_secret -> \x1b[0m";
+	std::getline(std::cin, this->_darkest_secret);
+}
+
+void	Contacts::print_contact()
+{
+	std::cout << "\x1b[31;1mFirst_name: \x1b[0m" << this->_first_name << std::endl;
+	std::cout << "\x1b[32;1mLast_name: \x1b[0m" << this->_last_name << std::endl;
+	std::cout << "\x1b[33;1mNickname: \x1b[0m" << this->_nickname << std::endl;
+	std::cout << "\x1b[31;1mLogin: \x1b[0m" << this->_login << std::endl;
+	std::cout << "\x1b[32;1mPostal_address: \x1b[0m" << this->_postal_address << std::endl;
+	std::cout << "\x1b[33;1mEmail_address: \x1b[0m" << this->_email_address << std::endl;
+	std::cout << "\x1b[31;1mPhone_number: \x1b[0m" << this->_phone_number << std::endl;
+	std::cout << "\x1b[32;1mBirthday_date: \x1b[0m" << this->_birthday_date << std::endl;
+	std::cout << "\x1b[33;1mFavorite_meal: \x1b[0m" << this->_favorite_meal << std::endl;
+	std::cout << "\x1b[31;1mUnderwear_color: \x1b[0m" << this->_underwear_color << std::endl;
+	std::cout << "\x1b[32;1mDarkest_secret: \x1b[0m" << this->_darkest_secret << std::endl;
+}
+
+void	My_book::search_in_mybook(Contacts contacts[8])
 {
 	std::string	line;
 	size_t		index;
@@ -99,26 +121,28 @@ void	My_book::search_in_mybook(Contacts *contacts)
 		std::cout << "\x1b[31;1m|     index|first_name| last_name|  nickname|\x1b[0m" << std::endl;
 		for (size_t i = 0; i < this->count; i++)
 		{
-			std::cout << "|         " << i << "|" << std::endl;
+			std::cout << "\x1b[32;1m|         \x1b[0m" << i << "\x1b[32;1m|\x1b[0m";
 			contacts[i].print_search();
 			std::cout << std::endl;
 		}
-		std::cout << "\x1b[33;1m/////////////////////////////////////\x1b[0m" << std::endl;
+		std::cout << "\x1b[33;1m/////////////////////////////////////////////\x1b[0m" << std::endl;
 		std::cout << "\x1b[95;1mWho do u need? -> \x1b[0m";
 		std::getline(std::cin, line);
-		index = std::stoi(line);
-		if (index >= 0 || index <= this->count)
-			contacts[index].print_contact();
-		else
+		if (line.empty() || (line != "0" && line != "1" && line != "2" && line != "3" && line != "4" \
+		 && line != "5" && line != "6" && line != "7"))
 		{
 			std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
-			std::cout << "\x1b[32;1mNo such contact!\x1b[0m" << std::endl;
+			std::cout << "\x1b[32;1mI need number 0-7!\x1b[0m" << std::endl;
 			std::cout << "\x1b[33;1mLucky some other time!\x1b[0m" << std::endl;
+			return;
 		}
+		index = std::stoi(line);
+		if (index >= 0 && index < this->count)
+			contacts[index].print_contact();
 	}
 }
 
-void	My_book::add_in_mybook(/*Contacts contacts[8]*/)
+void	My_book::add_in_mybook(Contacts contacts[8])
 {
 	if (this->count == 8)
 	{
@@ -128,7 +152,7 @@ void	My_book::add_in_mybook(/*Contacts contacts[8]*/)
 	}
 	else
 	{
-		//add_first_name()
+		contacts[this->count].add_contact();
 		this->count++;
 	}
 }
@@ -157,7 +181,7 @@ int		main()
 		if ("EXIT" == line)
 			break;
 		else if ("ADD" == line)
-			my_book.add_in_mybook(/*contacts*/);
+			my_book.add_in_mybook(contacts);
 		else if ("SEARCH" == line)
 			my_book.search_in_mybook(contacts);
 	}

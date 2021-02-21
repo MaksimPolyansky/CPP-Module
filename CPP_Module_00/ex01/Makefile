@@ -10,6 +10,9 @@ OBJ = 		$(SRC:%.cpp=%.o)
 
 all: $(NAME)
 
+%.o: %.cpp
+	clang++ $(FLAGS) -c $< -o $@
+
 $(NAME): $(OBJ)
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
@@ -23,3 +26,6 @@ re: fclean all
 
 test: re
 	./crappy_phonebook
+
+de:
+	clang++ -g phonebook.cpp
