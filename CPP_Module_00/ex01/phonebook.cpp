@@ -1,27 +1,4 @@
-#include <iostream>
-#include <string>
-
-class My_book
-{
-	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nickname;
-		std::string	_login;
-		std::string	_postal_address;
-		std::string	_email_address;
-		std::string	_phone_number;
-		std::string	_birthday_date;
-		std::string	_favorite_meal;
-		std::string	_underwear_color;
-		std::string	_darkest_secret;
-		size_t		count;
-	public:
-		My_book();
-		~My_book();
-		void	add_in_mybook();
-		void	search_in_mybook();
-};
+#include "phonebook.hpp"
 
 My_book::My_book()
 {
@@ -37,18 +14,111 @@ My_book::~My_book()
 	return;
 }
 
-
-void	My_book::search_in_mybook()
+Contacts::Contacts()
 {
+}
+
+Contacts::~Contacts()
+{
+}
+/*
+void	My_book::add_first_name()
+{
+	std::string = line;
+	std::cout << "\x1b[95;1mFirst_name -> \x1b[0m";
+	std::getline(std::cin, line);
+	my_book[count]._first_name = line;
+}
+void	add_last_name(My_book my_book[8], int count);
+void	add_nickname(My_book my_book[8], int count);
+void	add_login(My_book my_book[8], int count);
+void	add_postal_address(My_book my_book[8], int count);
+void	add_email_address(My_book my_book[8], int count);
+void	add_phone_number(My_book my_book[8], int count);
+void	add_birthday_date(My_book my_book[8], int count);
+void	add_favorite_meal(My_book my_book[8], int count);
+void	add_underwear_color(My_book my_book[8], int count);
+void	add_darkest_secret(My_book my_book[8], int count);
+*/
+
+void	Contacts::print_search()
+{
+	size_t	len;
+
+	if ((len = this->_first_name.length()) <= 8)
+	{
+		for (size_t i = 0; i < (8 - len); i++)
+			std::cout << " ";
+		std::cout << this->_first_name << "|";
+	}
+	else
+	{
+		for (size_t i = 0; i < 8; i++)
+			std::cout << this->_first_name[i];
+		std::cout << ".|";
+	}
+	if ((len = this->_last_name.length()) <= 8)
+	{
+		for (size_t i = 0; i < (8 - len); i++)
+			std::cout << " ";
+		std::cout << this->_last_name << "|";
+	}
+	else
+	{
+		for (size_t i = 0; i < 8; i++)
+			std::cout << this->_last_name[i];
+		std::cout << ".|";
+	}
+	if ((len = this->_nickname.length()) <= 8)
+	{
+		for (size_t i = 0; i < (8 - len); i++)
+			std::cout << " ";
+		std::cout << this->_nickname << "|";
+	}
+	else
+	{
+		for (size_t i = 0; i < 8; i++)
+			std::cout << this->_nickname[i];
+		std::cout << ".|";
+	}
+}
+
+void	My_book::search_in_mybook(Contacts *contacts)
+{
+	std::string	line;
+	size_t		index;
+
 	if (this->count == 0)
 	{
 		std::cout << "\x1b[31;1mI'm so sorry...\x1b[0m" << std::endl;
 		std::cout << "\x1b[32;1mYour phonebook is empty...\x1b[0m" << std::endl;
 		std::cout << "\x1b[33;1mBut u can ADD ur first friend!\x1b[0m" << std::endl;
 	}
+	else
+	{
+		std::cout << "\x1b[31;1m|     index|first_name| last_name|  nickname|\x1b[0m" << std::endl;
+		for (size_t i = 0; i < this->count; i++)
+		{
+			std::cout << "|         " << i << "|" << std::endl;
+			contacts[i].print_search();
+			std::cout << std::endl;
+		}
+		std::cout << "\x1b[33;1m/////////////////////////////////////\x1b[0m" << std::endl;
+		std::cout << "\x1b[95;1mWho do u need? -> \x1b[0m";
+		std::getline(std::cin, line);
+		index = std::stoi(line);
+		if (index >= 0 || index <= this->count)
+			contacts[index].print_contact();
+		else
+		{
+			std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
+			std::cout << "\x1b[32;1mNo such contact!\x1b[0m" << std::endl;
+			std::cout << "\x1b[33;1mLucky some other time!\x1b[0m" << std::endl;
+		}
+	}
 }
 
-void	My_book::add_in_mybook()
+void	My_book::add_in_mybook(/*Contacts contacts[8]*/)
 {
 	if (this->count == 8)
 	{
@@ -58,6 +128,7 @@ void	My_book::add_in_mybook()
 	}
 	else
 	{
+		//add_first_name()
 		this->count++;
 	}
 }
@@ -76,6 +147,7 @@ int		main()
 {
 	std::string	line;
 	My_book		my_book;
+	Contacts	contacts[8];
 
 	my_welcom();
 	while (1)
@@ -85,9 +157,9 @@ int		main()
 		if ("EXIT" == line)
 			break;
 		else if ("ADD" == line)
-			my_book.add_in_mybook();
+			my_book.add_in_mybook(/*contacts*/);
 		else if ("SEARCH" == line)
-			my_book.search_in_mybook();
+			my_book.search_in_mybook(contacts);
 	}
 	return 0;
 }
