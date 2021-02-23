@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/21 19:53:24 by heusebio          #+#    #+#             */
+/*   Updated: 2021/02/23 22:07:43 by heusebio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
 
 My_book::My_book()
@@ -139,6 +151,13 @@ void	My_book::search_in_mybook(Contacts contacts[8])
 		index = std::stoi(line);
 		if (index >= 0 && index < this->count)
 			contacts[index].print_contact();
+		else
+		{
+			std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
+			std::cout << "\x1b[32;1mBad number!\x1b[0m" << std::endl;
+			std::cout << "\x1b[33;1mLucky some other time!\x1b[0m" << std::endl;
+			return;
+		}
 	}
 }
 
