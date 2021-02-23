@@ -1,10 +1,6 @@
-NAME00 =		Pony
+NAME00 =	./ex00/Pony
 
-SRC00 =			./ex00/Pony.cpp ./ex00/main.cpp
-
-OBJ00 = 		$(SRC00:%.cpp=%.o)
-
-FLAGS =			-Wall -Werror -Wextra
+NAME01 =	./ex01/MemoryLeak
 
 .PHONY: all clean fclean re
 
@@ -12,24 +8,25 @@ all:
 	@echo "Try again!"
 	@echo "Use make with anyway arguments!"
 
-%.o: %.cpp
-	clang++ $(FLAGS) -c $< -o $@
-
 ex00: $(NAME00)
+	$(NAME00)
 
-$(NAME00): $(OBJ00)
-	clang++ $(FLAGS) $(OBJ00) -o $(NAME00)
+$(NAME00):
+	make -C ./ex00
+
+ex01: $(NAME01)
+	$(NAME01)
+
+$(NAME01):
+	make -C ./ex01
 
 clean:
-	rm -rf $(OBJ00)
+	make clean -C ./ex00
+	make clean -C ./ex01
 
-fclean: clean
-	rm -rf $(NAME00)
+fclean:
+	make fclean -C ./ex00
+	make fclean -C ./ex01
 
 re: fclean all
 
-test: re
-	./$(NAME)
-
-de:
-	clang++ -g $(SRC)
