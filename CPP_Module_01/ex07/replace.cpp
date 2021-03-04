@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <sstream>
 
@@ -16,14 +17,14 @@ int			main(int ac, char **av)
 		std::string		fname = av[1];
 		if (fname.empty())
 		{
-			std::cout << "\x1b[31;1mBad FILENAME!\x1b[0m" << std::endl;
+			std::cout << "\x1b[31;1mBad YOUR file!\x1b[0m" << std::endl;
 			return 1;
 		}
 		std::ifstream	name;
 		name.open(fname);
 		if (!name.is_open())
 		{
-			std::cout << "\x1b[31;1mBad FILENAME!\x1b[0m" << std::endl;
+			std::cout << "\x1b[31;1mBad YOUR file!\x1b[0m" << std::endl;
 			return 1;
 		}
 		std::string		str1 = av[2];
@@ -41,14 +42,14 @@ int			main(int ac, char **av)
 		fname += ".replace";
 		std::ofstream	filename;
 		filename.open(fname);
-		if (!!filename.is_open())
+		if (!filename.is_open())
 		{
-			std::cout << "\x1b[31;1mI can't open file!\x1b[0m" << std::endl;
+			std::cout << "\x1b[31;1mI can't open *.REPLACE!\x1b[0m" << std::endl;
 			return 1;
 		}
 		filename.clear();
 		std::string		str;
-		while (!name.eof())
+/*		while (!name.eof())
 		{
 			std::getline(name, str);
 			if (str.find(str1) < str.size())
@@ -66,6 +67,30 @@ int			main(int ac, char **av)
 			}
 			else
 				filename << str << std::endl;
+		}
+*/		while (std::getline(name, str))
+		{
+			if (str.find(str1) < str.size())
+			{
+				std::stringstream	line;
+				for (size_t i = 0; i < str.size(); i++)
+				{
+					if (i == str.find(str, i))
+					{
+						line << str2;
+						i += str1.size();
+					}
+					else
+						line << str[i];
+				}
+				filename << line.str();
+				line.str("");
+				line.clear();
+			}
+			else
+				filename << str;
+			if (!name.eof())
+				filename << std::endl;
 		}
 		name.close();
 		filename.close();
