@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <chrono>
+#include <thread>
 
 class Zombie
 {
@@ -10,9 +13,10 @@ class Zombie
 		std::string	_type;
 		std::string	_name;
 	public:
-		Zombie(std::string name, std::string type);
+		Zombie();
 		~Zombie();
 		void	announce();
+		std::string	random_name(int num);
 };
 
 #endif

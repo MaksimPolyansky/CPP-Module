@@ -9,13 +9,11 @@
 class ZombieHorde
 {
 	private:
-		std::string	_type;
 		int			_num;
 		Zombie		*_zombie;
 	public:
 		ZombieHorde(int num);
 		~ZombieHorde();
-		std::string	random_name(int num);
 		void		announce();
 };
 

@@ -2,15 +2,20 @@
 
 int		main()
 {
-	ZombieHorde	zombiehorde = ZombieHorde(5);
+	ZombieHorde	*zombiehorde1 = new ZombieHorde(5);
+	delete zombiehorde1;
 
+	ZombieHorde	*zombiehorde2 = new ZombieHorde(11);
+	delete zombiehorde2;
 
-	for (size_t i = 0; i < 5; i++)
-	{
-		std::string	name;
-		name = zombiehorde.random_name(5);
-		std::cout << name << std::endl;
-	}
+	ZombieHorde	*zombiehorde3 = new ZombieHorde(1);
+	delete zombiehorde3;
+
+	ZombieHorde	*zombiehorde4 = new ZombieHorde(14);
+	delete zombiehorde4;
+
+	ZombieHorde	*zombiehorde5 = new ZombieHorde(7);
+	delete zombiehorde5;
 
 	return 0;
 }
