@@ -49,36 +49,17 @@ int			main(int ac, char **av)
 		}
 		filename.clear();
 		std::string		str;
-/*		while (!name.eof())
-		{
-			std::getline(name, str);
-			if (str.find(str1) < str.size())
-			{
-				size_t	num = 0;
-				while (str.find(str1, num) < str.size())
-				{
-					if (num != str.find(str1, num))
-						filename << str.substr(num, str.find(str1, num));
-					filename << str2;
-					num = str.find(str1, num) + str1.size();
-				}
-				filename << str.substr(num);
-				filename << std::endl;
-			}
-			else
-				filename << str << std::endl;
-		}
-*/		while (std::getline(name, str))
+		while (std::getline(name, str))
 		{
 			if (str.find(str1) < str.size())
 			{
 				std::stringstream	line;
 				for (size_t i = 0; i < str.size(); i++)
 				{
-					if (i == str.find(str, i))
+					if (i == str.find(str1, i))
 					{
 						line << str2;
-						i += str1.size();
+						i += str1.size() - 1;
 					}
 					else
 						line << str[i];
