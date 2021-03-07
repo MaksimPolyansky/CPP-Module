@@ -6,7 +6,7 @@
 /*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:53:24 by heusebio          #+#    #+#             */
-/*   Updated: 2021/02/23 22:07:43 by heusebio         ###   ########.fr       */
+/*   Updated: 2021/03/07 17:38:19 by heusebio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void	My_book::search_in_mybook(Contacts contacts[8])
 	}
 	else
 	{
+		std::cout << "\x1b[33;1m/////////////////////////////////////////////\x1b[0m" << std::endl;
 		std::cout << "\x1b[31;1m|     index|first_name| last_name|  nickname|\x1b[0m" << std::endl;
 		for (size_t i = 0; i < this->count; i++)
 		{
@@ -173,6 +174,7 @@ void	My_book::add_in_mybook(Contacts contacts[8])
 	{
 		contacts[this->count].add_contact();
 		this->count++;
+		std::cout << "\x1b[36;1mI added your friend)\x1b[0m" << std::endl;
 	}
 }
 
@@ -181,9 +183,9 @@ void	my_welcom()
 	std::cout << "\x1b[31;1mWelcom my friends!\x1b[0m" << std::endl;
 	std::cout << "\x1b[32;1mIt's your phonebook!\x1b[0m" << std::endl;
 	std::cout << "\x1b[33;1mI can:\x1b[0m" << std::endl;
-	std::cout << "\x1b[31;1mADD your new friend;\x1b[0m" << std::endl;
-	std::cout << "\x1b[32;1mSEARCH in your phonebook;\x1b[0m" << std::endl;
-	std::cout << "\x1b[33;1mEXIT the program.\x1b[0m" << std::endl;
+	std::cout << "\x1b[34;1mADD your new friend;\x1b[0m" << std::endl;
+	std::cout << "\x1b[36;1mSEARCH in your phonebook;\x1b[0m" << std::endl;
+	std::cout << "\x1b[37;1mEXIT the program.\x1b[0m" << std::endl;
 }
 
 int		main()
