@@ -5,19 +5,13 @@
 
 class Human
 {
-private:
-	/* data */
-public:
-	Human(/* args */);
-	~Human();
+	private:
+		Brain const	_brain;
+	public:
+		Human(/* args */);
+		~Human();
+		Brain const	&getBrain() const;
+		std::string	identify() const;
 };
-
-Human::Human(/* args */)
-{
-}
-
-Human::~Human()
-{
-}
 
 #endif

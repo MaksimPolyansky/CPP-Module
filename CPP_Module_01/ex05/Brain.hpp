@@ -3,23 +3,16 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class Brain
 {
 	private:
-		std::string	line;
+		std::string	_something;
 	public:
-		Brain(/* args */);
+		Brain();
 		~Brain();
-		std::string	identify();
+		std::string	identify() const;
 };
-
-Brain::Brain(/* args */)
-{
-}
-
-Brain::~Brain()
-{
-}
 
 #endif
