@@ -6,7 +6,7 @@
 /*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:53:24 by heusebio          #+#    #+#             */
-/*   Updated: 2021/03/11 19:30:26 by heusebio         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:43:32 by heusebio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,15 @@ void	Contacts::print_search()
 	}
 }
 
+void	my_error()
+{
+	std::cout << std::endl;
+	std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
+	std::cout << "\x1b[31;1mThe program died!\x1b[0m" << std::endl;
+	std::cout << "\x1b[31;1mGood bye!\x1b[0m" << std::endl;
+	std::exit(1);
+}
+
 void	Contacts::add_info(std::string &info)
 {
 	std::getline(std::cin, info);
@@ -122,15 +131,6 @@ void	Contacts::print_contact()
 	std::cout << "\x1b[33;1mFavorite_meal: \x1b[0m" << this->_favorite_meal << std::endl;
 	std::cout << "\x1b[31;1mUnderwear_color: \x1b[0m" << this->_underwear_color << std::endl;
 	std::cout << "\x1b[32;1mDarkest_secret: \x1b[0m" << this->_darkest_secret << std::endl;
-}
-
-void	my_error()
-{
-	std::cout << std::endl;
-	std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
-	std::cout << "\x1b[31;1mThe program died!\x1b[0m" << std::endl;
-	std::cout << "\x1b[31;1mGood bye!\x1b[0m" << std::endl;
-	std::exit(1);
 }
 
 void	my_welcom()

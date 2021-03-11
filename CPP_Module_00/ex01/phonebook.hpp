@@ -6,7 +6,7 @@
 /*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:53:12 by heusebio          #+#    #+#             */
-/*   Updated: 2021/03/11 19:29:23 by heusebio         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:40:35 by heusebio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,5 @@ class My_book
 		void	add_in_mybook(Contacts contacts[8]);
 		void	search_in_mybook(Contacts contacts[8]);
 };
-
-void	my_error();
 
 #endif
