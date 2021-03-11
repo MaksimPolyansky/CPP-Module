@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iphonebook.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/21 19:53:19 by heusebio          #+#    #+#             */
+/*   Updated: 2021/03/10 18:53:45 by heusebio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef IPHONEBOOK_H
 # define IPHONEBOOK_H
 
@@ -24,6 +36,7 @@ class Contacts
 		void	print_search();
 		void	print_contact();
 		void	add_contact();
+		void	add_info(std::string &info);
 };
 
 #endif

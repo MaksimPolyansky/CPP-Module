@@ -6,7 +6,7 @@
 /*   By: heusebio <heusebio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 19:53:24 by heusebio          #+#    #+#             */
-/*   Updated: 2021/03/07 17:38:19 by heusebio         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:30:26 by heusebio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,37 @@ void	Contacts::print_search()
 	}
 }
 
+void	Contacts::add_info(std::string &info)
+{
+	std::getline(std::cin, info);
+	if (std::cin.eof())
+		my_error();
+}
+
 void	Contacts::add_contact()
 {
 	std::cout << "\x1b[95;1mFirst_name -> \x1b[0m";
-	std::getline(std::cin, this->_first_name);
+	this->add_info(this->_first_name);
 	std::cout << "\x1b[95;1mLast_name -> \x1b[0m";
-	std::getline(std::cin, this->_last_name);
+	this->add_info(this->_last_name);
 	std::cout << "\x1b[95;1mNickname -> \x1b[0m";
-	std::getline(std::cin, this->_nickname);
+	this->add_info(this->_nickname);
 	std::cout << "\x1b[95;1mLogin -> \x1b[0m";
-	std::getline(std::cin, this->_login);
+	this->add_info(this->_login);
 	std::cout << "\x1b[95;1mPostal_address -> \x1b[0m";
-	std::getline(std::cin, this->_postal_address);
+	this->add_info(this->_postal_address);
 	std::cout << "\x1b[95;1mEmail_address -> \x1b[0m";
-	std::getline(std::cin, this->_email_address);
+	this->add_info(this->_email_address);
 	std::cout << "\x1b[95;1mPhone_number -> \x1b[0m";
-	std::getline(std::cin, this->_phone_number);
+	this->add_info(this->_phone_number);
 	std::cout << "\x1b[95;1mBirthday_date -> \x1b[0m";
-	std::getline(std::cin, this->_birthday_date);
+	this->add_info(this->_birthday_date);
 	std::cout << "\x1b[95;1mFavorite_meal -> \x1b[0m";
-	std::getline(std::cin, this->_favorite_meal);
+	this->add_info(this->_favorite_meal);
 	std::cout << "\x1b[95;1mUnderwear_color -> \x1b[0m";
-	std::getline(std::cin, this->_underwear_color);
+	this->add_info(this->_underwear_color);
 	std::cout << "\x1b[95;1mDarkest_secret -> \x1b[0m";
-	std::getline(std::cin, this->_darkest_secret);
+	this->add_info(this->_darkest_secret);
 }
 
 void	Contacts::print_contact()
@@ -115,6 +122,25 @@ void	Contacts::print_contact()
 	std::cout << "\x1b[33;1mFavorite_meal: \x1b[0m" << this->_favorite_meal << std::endl;
 	std::cout << "\x1b[31;1mUnderwear_color: \x1b[0m" << this->_underwear_color << std::endl;
 	std::cout << "\x1b[32;1mDarkest_secret: \x1b[0m" << this->_darkest_secret << std::endl;
+}
+
+void	my_error()
+{
+	std::cout << std::endl;
+	std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
+	std::cout << "\x1b[31;1mThe program died!\x1b[0m" << std::endl;
+	std::cout << "\x1b[31;1mGood bye!\x1b[0m" << std::endl;
+	std::exit(1);
+}
+
+void	my_welcom()
+{
+	std::cout << "\x1b[31;1mWelcom my friends!\x1b[0m" << std::endl;
+	std::cout << "\x1b[32;1mIt's your phonebook!\x1b[0m" << std::endl;
+	std::cout << "\x1b[33;1mI can:\x1b[0m" << std::endl;
+	std::cout << "\x1b[34;1mADD your new friend;\x1b[0m" << std::endl;
+	std::cout << "\x1b[36;1mSEARCH in your phonebook;\x1b[0m" << std::endl;
+	std::cout << "\x1b[37;1mEXIT the program.\x1b[0m" << std::endl;
 }
 
 void	My_book::search_in_mybook(Contacts contacts[8])
@@ -141,21 +167,15 @@ void	My_book::search_in_mybook(Contacts contacts[8])
 		std::cout << "\x1b[33;1m/////////////////////////////////////////////\x1b[0m" << std::endl;
 		std::cout << "\x1b[95;1mWho do u need? -> \x1b[0m";
 		std::getline(std::cin, line);
-		if (line.empty() || (line != "0" && line != "1" && line != "2" && line != "3" && line != "4" \
-		 && line != "5" && line != "6" && line != "7"))
-		{
-			std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
-			std::cout << "\x1b[32;1mI need number 0-7!\x1b[0m" << std::endl;
-			std::cout << "\x1b[33;1mLucky some other time!\x1b[0m" << std::endl;
-			return;
-		}
-		index = std::stoi(line);
-		if (index >= 0 && index < this->count)
+		if (std::cin.eof())
+			my_error();
+		index = atoi(line.c_str());
+		if (line.size() == 1 && index >= 0 && index < this->count)
 			contacts[index].print_contact();
 		else
 		{
 			std::cout << "\x1b[31;1mOoops!\x1b[0m" << std::endl;
-			std::cout << "\x1b[32;1mBad number!\x1b[0m" << std::endl;
+			std::cout << "\x1b[32;1mI need number 0-\x1b[0m" << this->count << "\x1b[32;1m!\x1b[0m" << std::endl;
 			std::cout << "\x1b[33;1mLucky some other time!\x1b[0m" << std::endl;
 			return;
 		}
@@ -178,16 +198,6 @@ void	My_book::add_in_mybook(Contacts contacts[8])
 	}
 }
 
-void	my_welcom()
-{
-	std::cout << "\x1b[31;1mWelcom my friends!\x1b[0m" << std::endl;
-	std::cout << "\x1b[32;1mIt's your phonebook!\x1b[0m" << std::endl;
-	std::cout << "\x1b[33;1mI can:\x1b[0m" << std::endl;
-	std::cout << "\x1b[34;1mADD your new friend;\x1b[0m" << std::endl;
-	std::cout << "\x1b[36;1mSEARCH in your phonebook;\x1b[0m" << std::endl;
-	std::cout << "\x1b[37;1mEXIT the program.\x1b[0m" << std::endl;
-}
-
 int		main()
 {
 	std::string	line;
@@ -199,6 +209,8 @@ int		main()
 	{
 		std::cout << "\x1b[95;1mWhat do u want?(-; -> \x1b[0m";
 		std::getline(std::cin, line);
+		if (std::cin.eof())
+			my_error();
 		if ("EXIT" == line)
 			break;
 		else if ("ADD" == line)
