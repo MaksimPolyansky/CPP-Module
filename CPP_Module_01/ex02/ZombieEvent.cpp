@@ -22,11 +22,24 @@ Zombie	*ZombieEvent::newZombie(std::string name)
 
 Zombie	*ZombieEvent::randomChump()
 {
-	std::string	random_name[5] = {"Will", "Bill", "James", "Stweeie", "Vasya"};
+	char		consonants[20] = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'};
+	char		vowels[6] = {'a', 'e', 'i', 'o', 'u', 'y'};
+	std::string	name = "";
 	Zombie		*zombie;
+	int			random;
 
-	std::srand(std::time(NULL));
-	zombie = newZombie(random_name[std::rand() % 4]);
+	std::srand(std::clock());
+	int			len = 3 + std::rand() % 5;
+	random = std::rand() % 19;
+	name += std::toupper(consonants[random]);
+	for (int i = 1; i < len; i += 2)
+	{
+		random = std::rand() % 5;
+		name += vowels[random];
+		random = std::rand() % 19;
+		name += consonants[random];
+	}
+	zombie = newZombie(name);
 	zombie->announce();
 	return zombie;
 }
