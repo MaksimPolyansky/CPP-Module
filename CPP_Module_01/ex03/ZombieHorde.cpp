@@ -1,8 +1,7 @@
 #include "ZombieHorde.hpp"
 
-ZombieHorde::ZombieHorde(int num)
+ZombieHorde::ZombieHorde(int num) : _num(num)
 {
-	this->_num = num;
 	this->_zombie = new Zombie[this->_num];
 	this->announce();
 }

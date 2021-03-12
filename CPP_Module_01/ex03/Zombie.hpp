@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-#include <chrono>
-#include <thread>
 
 class Zombie
 {
