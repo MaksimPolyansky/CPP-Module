@@ -1,0 +1,33 @@
+NAME =		Fixed
+
+SRC =		Fixed.cpp main.cpp
+
+HEADER =	Fixed.hpp
+
+FLAGS =		-Wall -Werror -Wextra -I $(HEADER)
+
+OBJ = 		$(SRC:%.cpp=%.o)
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+%.o: %.cpp
+	clang++ $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJ) $(HEADER)
+	clang++ $(FLAGS) $(OBJ) -o $(NAME)
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+test: re
+	./$(NAME)
+
+de:
+	clang++ -g $(SRC)
