@@ -1,7 +1,5 @@
 #include <iostream>
-#include <string>
 #include <fstream>
-#include <sstream>
 
 int			main(int ac, char **av)
 {
@@ -53,20 +51,18 @@ int			main(int ac, char **av)
 		{
 			if (str.find(str1) < str.size())
 			{
-				std::stringstream	line;
+				std::string	line;
 				for (size_t i = 0; i < str.size(); i++)
 				{
 					if (i == str.find(str1, i))
 					{
-						line << str2;
+						line += str2;
 						i += str1.size() - 1;
 					}
 					else
-						line << str[i];
+						line += str[i];
 				}
-				filename << line.str();
-				line.str("");
-				line.clear();
+				filename << line;
 			}
 			else
 				filename << str;
