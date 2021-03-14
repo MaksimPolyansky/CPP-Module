@@ -2,6 +2,7 @@
 
 FragTrap::FragTrap(/* args */)
 {
+	std::srand(std::time(NULL));
 }
 
 FragTrap::FragTrap(std::string name)
@@ -41,7 +42,7 @@ FragTrap::~FragTrap()
 
 void		FragTrap::rangedAttack(std::string const &target)
 {
-	if (36 > this->_energy_points)
+	if (35 > this->_energy_points)
 	{
 		std::cout << "\e[1;33m" << this->_name << "\e[1;33m needs Snickers, because \e[1;33m";
 		std::cout << this->_name << "\e[1;33m has no energy to ranged attack!" << std::endl;
@@ -50,7 +51,7 @@ void		FragTrap::rangedAttack(std::string const &target)
 	}
 	else
 	{
-		this->_energy_points -= 36;
+		this->_energy_points -= 35;
 		std::cout << "\e[1;31mFR4G-TP \e[1;31m" << this->_name << "\e[1;31m attacks \e[1;31m";
 		std::cout << target << "\e[1;31m at ranged, causing \e[1;31m" << this->_ranged_attack_damage;
 		std::cout << "\e[1;31m points of damage!" << std::endl;
@@ -61,7 +62,7 @@ void		FragTrap::rangedAttack(std::string const &target)
 
 void		FragTrap::meleeAttack(std::string const &target)
 {
-	if (24 > this->_energy_points)
+	if (15 > this->_energy_points)
 	{
 		std::cout << "\e[1;33m" << this->_name << "\e[1;33m needs Snickers, because \e[1;33m";
 		std::cout << this->_name << "\e[1;33m has no energy to melee attack!" << std::endl;
@@ -70,7 +71,7 @@ void		FragTrap::meleeAttack(std::string const &target)
 	}
 	else
 	{
-		this->_energy_points -= 24;
+		this->_energy_points -= 15;
 		std::cout << "\e[1;31mFR4G-TP \e[1;31m" << this->_name << "\e[1;31m attacks \e[1;31m";
 		std::cout << target << "\e[1;31m at melee, causing \e[1;31m" << this->_melee_attack_damage;
 		std::cout << "\e[1;31m points of damage!" << std::endl;
@@ -107,6 +108,30 @@ void		FragTrap::beRepaired(unsigned int amount)
 	std::cout << this->_energy_points << "\e[1;32m!" << std::endl;
 }
 
+void		FragTrap::vaulthunter_dot_exe(std::string const &target)
+{
+	std::string		line[5] = {"smelly attack", \
+					"sneak attact", "political attack", \
+					"funny attack", "super attack"};
+
+	if (25 > this->_energy_points)
+	{
+		std::cout << "\e[1;36m" << this->_name << "\e[1;36m needs Snickers, because \e[1;36m";
+		std::cout << this->_name << "\e[1;36m has no energy to \e[1;36m" << line[std::rand() % 4];
+		std::cout << "\e[1;36m!" << std::endl;
+		std::cout << "\e[1;36m" << this->_name << "\e[1;36m has \e[1;36m";
+		std::cout << this->_energy_points << "\e[1;36m energy points!" << std::endl;
+	}
+	else
+	{
+		this->_energy_points -= 25;
+		std::cout << "\e[1;36mFR4G-TP \e[1;36m" << this->_name << "\e[1;36m attacks \e[1;36m";
+		std::cout << target << "\e[1;36m at " << line[std::rand() % 4];
+		std::cout << ", causing 25\e[1;36m" << "\e[1;36m points of damage!" << std::endl;
+		std::cout << "\e[1;36m" << this->_name << "\e[1;36m has \e[1;36m";
+		std::cout << this->_energy_points << "\e[1;36m energy points!" << std::endl;
+	}
+}
 
 int			FragTrap::getRangedAttack(void)
 {
@@ -116,6 +141,11 @@ int			FragTrap::getRangedAttack(void)
 int			FragTrap::getMeleeAttack(void)
 {
 	return this->_melee_attack_damage;
+}
+
+int			FragTrap::getSuperAttack(void)
+{
+	return this->_super_attact_damage;
 }
 
 std::string	FragTrap::getName(void)

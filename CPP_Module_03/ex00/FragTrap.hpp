@@ -2,6 +2,7 @@
 # define FRAGTRAP_HPP
 
 #include <iostream>
+#include <ctime>
 
 class FragTrap
 {
@@ -15,6 +16,7 @@ class FragTrap
 		unsigned int	_melee_attack_damage = 30;
 		unsigned int	_ranged_attack_damage = 20;
 		unsigned int	_armor_damage_reduction = 5;
+		unsigned int	_super_attact_damage = 50;
 	public:
 		FragTrap(/* args */);
 		FragTrap(std::string name);
@@ -31,6 +33,7 @@ class FragTrap
 
 		int				getRangedAttack(void);
 		int				getMeleeAttack(void);
+		int				getSuperAttack(void);
 		std::string		getName(void);
 };
 

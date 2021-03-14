@@ -23,8 +23,8 @@ int		main()
 	first.takeDamage(second.getMeleeAttack());
 	first.meleeAttack(second.getName());
 	second.takeDamage(first.getMeleeAttack());
-	first.rangedAttack(second.getName());
-	second.takeDamage(first.getRangedAttack());
+	first.vaulthunter_dot_exe(second.getName());
+	second.takeDamage(first.getSuperAttack());
 
 	return 0;
 }
