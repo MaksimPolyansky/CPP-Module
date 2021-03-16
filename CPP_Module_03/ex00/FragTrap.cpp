@@ -7,6 +7,7 @@ FragTrap::FragTrap(/* args */)
 
 FragTrap::FragTrap(std::string name)
 {
+	std::srand(std::time(NULL));
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_level = 1;
@@ -16,6 +17,7 @@ FragTrap::FragTrap(std::string name)
 
 FragTrap::FragTrap(FragTrap const &copy)
 {
+	std::srand(std::time(NULL));
 	this->_hit_points = copy._hit_points;
 	this->_energy_points = copy._energy_points;
 	this->_level = copy._level;
