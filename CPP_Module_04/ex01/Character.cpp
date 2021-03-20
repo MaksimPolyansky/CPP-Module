@@ -42,12 +42,16 @@ void			Character::equip(AWeapon *aw)
 
 void			Character::attack(Enemy *en)
 {
-	if (this->_ap <= 0)
+	if (this->_aweapon && this->getAP() < this->_aweapon->getAPCost())
 		std::cout << "\e[1;35mOoops... No AP!" << std::endl;
-	if (en)
+	else if (en)
 	{
+		this->_ap -= this->_aweapon->getAPCost();
 		std::cout << "\e[1;35m" << this->_name << " attacks ";
-		std::cout << en->getType() << std::endl;
+		std::cout << en->getType() << " with a ";
+		std::cout << this->_aweapon->getName() << std::endl;
+		this->_aweapon->attack();
+		en->takeDamage(this->_aweapon->getDamage());
 	}
 }
 
@@ -56,8 +60,29 @@ std::string		Character::getName() const
 	return this->_name;
 }
 
+AWeapon			*Character::getWeapon() const
+{
+	return this->_aweapon;
+}
+
+int				Character::getAP() const
+{
+	return this->_ap;
+}
+
 std::ostream	&operator<<(std::ostream &output, Character const &ch)
 {
-	output << "" << "" << std::endl;
+	std::cout << "\e[1;35m" << ch.getName() << " has ";
+	std::cout << ch.getAP() << " AP and ";
+	if (ch.getWeapon())
+	{
+		std::cout << "wields a ";
+		std::cout << ch.getWeapon()->getName() << std::endl;
+	}
+	else
+		std::cout << "is unarmed" << std::endl;
 	return output;
 }
+
+//NAME has AP_NUMBER AP and wields a WEAPON_NAME
+//NAME has AP_NUMBER AP and is unarmed

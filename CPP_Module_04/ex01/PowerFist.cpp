@@ -1,6 +1,6 @@
 #include "PowerFist.hpp"
 
-PowerFist::PowerFist(/* args */) : AWeapon("Power Fist", 50, 8)
+PowerFist::PowerFist(/* args */) : AWeapon("Power Fist", 8, 50)
 {
 }
 

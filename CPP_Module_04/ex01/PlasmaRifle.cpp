@@ -1,6 +1,6 @@
 #include "PlasmaRifle.hpp"
 
-PlasmaRifle::PlasmaRifle(/* args */) : AWeapon("Plasma Rifle", 21, 5)
+PlasmaRifle::PlasmaRifle(/* args */) : AWeapon("Plasma Rifle", 5, 21)
 {
 }
 

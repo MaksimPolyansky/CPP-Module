@@ -24,28 +24,4 @@ class AWeapon
 		virtual void attack() const = 0;
 };
 
-AWeapon::AWeapon(std::string const & name, int apcost, int damage) : _name(name), _ap(apcost), _damage(damage)
-{}
-
-AWeapon::AWeapon(AWeapon const &copy)
-{
-	this->_name = copy._name;
-	this->_damage = copy._damage;
-	this->_ap = copy._ap;
-}
-
-AWeapon::~AWeapon()
-{}
-
-AWeapon		&AWeapon::operator=(AWeapon const &aw)
-{
-	if (this != &aw)
-	{
-		this->_name = aw._name;
-		this->_damage = aw._damage;
-		this->_ap = aw._ap;
-	}
-	return *this;
-}
-
 #endif
