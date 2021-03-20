@@ -17,15 +17,9 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I'm alive!" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &copy)
+ScavTrap::ScavTrap(ScavTrap const &copy) : ClapTrap(copy)
 {
 	std::srand(std::time(NULL));
-	this->_max_energy_points = copy._max_energy_points;
-	this->_energy_points = copy._energy_points;
-	this->_melee_attack_damage = copy._melee_attack_damage;
-	this->_ranged_attack_damage = copy._ranged_attack_damage;
-	this->_armor_damage_reduction = copy._armor_damage_reduction;
-	this->_name = copy._name + "_copy";
 	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I'm alive!" << std::endl;
 }
 
@@ -37,14 +31,7 @@ ScavTrap::~ScavTrap()
 ScavTrap		&ScavTrap::operator=(ScavTrap const &Scavtrap)
 {
 	if (this != &Scavtrap)
-	{
-		this->_max_energy_points = Scavtrap._max_energy_points;
-		this->_energy_points = Scavtrap._energy_points;
-		this->_melee_attack_damage = Scavtrap._melee_attack_damage;
-		this->_ranged_attack_damage = Scavtrap._ranged_attack_damage;
-		this->_armor_damage_reduction = Scavtrap._armor_damage_reduction;
-		this->_name = Scavtrap._name + "_copy";
-	}
+		ClapTrap::operator=(Scavtrap);
 	return *this;
 }
 
