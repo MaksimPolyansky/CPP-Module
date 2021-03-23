@@ -38,6 +38,6 @@ unsigned int		AMateria::getXP() const
 
 void				AMateria::use(ICharacter& target)
 {
-	(void)target;
+	target.getName();
 	this->_xp += 10;
 }

@@ -3,23 +3,34 @@
 Character::Character(std::string name)
 {
 	this->_name = name;
-	for (size_t i = 0; i < 4; i++)
-		this->_materis[i] = NULL;
+	this->_materis = new AMateria*[this->_size];
 }
 
 Character::Character(Character const &copy)
 {
 	this->_name = copy._name;
-	for (size_t i = 0; i < 4; i++)
-		this->_materis[i] = copy._materis[i];
+	if (copy._materis)
+	{
+		this->_materis = new AMateria*[this->_size];
+		for (int i = 0; i < this->_size; i++)
+		{
+			this->_materis[i] = copy._materis[i];
+		}
+	}
+	else
+		this->_materis = NULL;
 }
 
 Character::~Character()
 {
-	for (size_t i = 0; i < 4; i++)
+	if (this->_materis)
 	{
-		if (this->_materis[i])
-			delete this->_materis[i];
+		for (int i = 0; i < this->_size; i++)
+		{
+			if (this->_materis[i])
+				delete this->_materis[i];
+		}
+		delete[] this->_materis;
 	}
 }
 
@@ -28,12 +39,17 @@ Character			&Character::operator=(Character const &ch)
 	if (this != &ch)
 	{
 		this->_name = ch._name;
-		for (size_t i = 0; i < 4; i++)
+		if (this->_materis)
 		{
-			if (ch._materis[i])
+			delete[] this->_materis;
+		}
+		if (ch._materis)
+		{
+			this->_materis = new AMateria*[this->_size];
+			for (int i = 0; i < this->_size; i++)
+			{
 				this->_materis[i] = ch._materis[i];
-			else
-				this->_materis[i] = NULL;
+			}
 		}
 	}
 	return *this;
