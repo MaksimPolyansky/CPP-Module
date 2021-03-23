@@ -26,8 +26,16 @@ NinjaTrap::NinjaTrap(std::string name)
 	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I was!" << std::endl;
 }
 
-NinjaTrap::NinjaTrap(NinjaTrap const &ninjatrap) : ClapTrap(ninjatrap)
+NinjaTrap::NinjaTrap(NinjaTrap const &ninjatrap)
 {
+	this->_hit_points = ninjatrap._hit_points;
+	this->_max_hit_points = ninjatrap._max_hit_points;
+	this->_max_energy_points = ninjatrap._max_energy_points;
+	this->_energy_points = ninjatrap._energy_points;
+	this->_melee_attack_damage = ninjatrap._melee_attack_damage;
+	this->_ranged_attack_damage = ninjatrap._ranged_attack_damage;
+	this->_armor_damage_reduction = ninjatrap._armor_damage_reduction;
+	this->_name = ninjatrap._name;
 	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I was created!" << std::endl;
 }
 
@@ -39,7 +47,16 @@ NinjaTrap::~NinjaTrap()
 NinjaTrap		&NinjaTrap::operator=(NinjaTrap const &ninjatrap)
 {
 	if (this != &ninjatrap)
-		ClapTrap::operator=(ninjatrap);
+	{
+		this->_hit_points = ninjatrap._hit_points;
+		this->_max_hit_points = ninjatrap._max_hit_points;
+		this->_max_energy_points = ninjatrap._max_energy_points;
+		this->_energy_points = ninjatrap._energy_points;
+		this->_melee_attack_damage = ninjatrap._melee_attack_damage;
+		this->_ranged_attack_damage = ninjatrap._ranged_attack_damage;
+		this->_armor_damage_reduction = ninjatrap._armor_damage_reduction;
+		this->_name = ninjatrap._name;
+	}
 	return *this;
 }
 

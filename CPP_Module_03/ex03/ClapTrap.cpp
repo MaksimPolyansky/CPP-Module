@@ -34,7 +34,7 @@ ClapTrap::ClapTrap(ClapTrap const &claptrap)
 	this->_melee_attack_damage = claptrap._melee_attack_damage;
 	this->_ranged_attack_damage = claptrap._ranged_attack_damage;
 	this->_armor_damage_reduction = claptrap._armor_damage_reduction;
-	this->_name = claptrap._name + "_copy";
+	this->_name = claptrap._name;
 	std::cout << "\e[1;35mI was created!" << std::endl;
 }
 
