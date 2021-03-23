@@ -10,7 +10,7 @@ ClapTrap::ClapTrap(/* args */)
 	this->_ranged_attack_damage = 0;
 	this->_armor_damage_reduction = 0;
 	this->_name = "Clap";
-	std::cout << "\e[1;35mI was created!" << std::endl;
+	std::cout << "\e[1;35mClapTrap: Default ctor!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name)
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 	this->_melee_attack_damage = 30;
 	this->_ranged_attack_damage = 20;
 	this->_armor_damage_reduction = 10;
-	std::cout << "\e[1;35mI was created!" << std::endl;
+	std::cout << "\e[1;35mClapTrap: Default ctor!" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &claptrap)
@@ -35,12 +35,12 @@ ClapTrap::ClapTrap(ClapTrap const &claptrap)
 	this->_ranged_attack_damage = claptrap._ranged_attack_damage;
 	this->_armor_damage_reduction = claptrap._armor_damage_reduction;
 	this->_name = claptrap._name + "_copy";
-	std::cout << "\e[1;35mI was created!" << std::endl;
+	std::cout << "\e[1;35mClapTrap: Copy ctor!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "\e[1;35mI was destroyed!" << std::endl;
+	std::cout << "\e[1;35mClapTrap: dtor!" << std::endl;
 }
 
 ClapTrap		&ClapTrap::operator=(ClapTrap const &claptrap)
@@ -56,6 +56,7 @@ ClapTrap		&ClapTrap::operator=(ClapTrap const &claptrap)
 		this->_armor_damage_reduction = claptrap._armor_damage_reduction;
 		this->_name = claptrap._name;
 	}
+	std::cout << "\e[1;35mClapTrap: Assignation operator!" << std::endl;
 	return *this;
 }
 

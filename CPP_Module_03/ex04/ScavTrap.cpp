@@ -3,6 +3,7 @@
 ScavTrap::ScavTrap(/* args */)
 {
 	std::srand(std::time(NULL));
+	std::cout << "\e[1;35mScavTrap: Default ctor!" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -16,24 +17,42 @@ ScavTrap::ScavTrap(std::string name)
 	this->_ranged_attack_damage = 15;
 	this->_armor_damage_reduction = 3;
 	this->_name = name;
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I'm alive!" << std::endl;
+	std::cout << "\e[1;35mScavTrap: Default ctor!" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &copy) : ClapTrap(copy)
+ScavTrap::ScavTrap(ScavTrap const &copy)
 {
 	std::srand(std::time(NULL));
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I'm alive!" << std::endl;
+	this->_hit_points = copy._hit_points;
+	this->_max_hit_points = copy._max_hit_points;
+	this->_energy_points = copy._energy_points;
+	this->_max_energy_points = copy._max_energy_points;
+	this->_melee_attack_damage = copy._melee_attack_damage;
+	this->_ranged_attack_damage = copy._ranged_attack_damage;
+	this->_armor_damage_reduction = copy._armor_damage_reduction;
+	this->_name = copy._name + "_copy";
+	std::cout << "\e[1;35mScavTrap: copy ctor!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m: I'm still alive!" << std::endl;
+	std::cout << "\e[1;35mScavTrap: Dtor!" << std::endl;
 }
 
 ScavTrap		&ScavTrap::operator=(ScavTrap const &Scavtrap)
 {
 	if (this != &Scavtrap)
-		ClapTrap::operator=(Scavtrap);
+	{
+		this->_hit_points = Scavtrap._hit_points;
+		this->_max_hit_points = Scavtrap._max_hit_points;
+		this->_energy_points = Scavtrap._energy_points;
+		this->_max_energy_points = Scavtrap._max_energy_points;
+		this->_melee_attack_damage = Scavtrap._melee_attack_damage;
+		this->_ranged_attack_damage = Scavtrap._ranged_attack_damage;
+		this->_armor_damage_reduction = Scavtrap._armor_damage_reduction;
+		this->_name = Scavtrap._name;
+	}
+	std::cout << "\e[1;35mScavTrap: Assignation operator!" << std::endl;
 	return *this;
 }
 

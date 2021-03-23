@@ -3,7 +3,7 @@
 
 #include "NinjaTrap.hpp"
 
-class SuperTrap : public FragTrap, public NinjaTrap
+class SuperTrap : virtual public FragTrap, virtual public NinjaTrap
 {
 	public:
 		SuperTrap(/* args */);

@@ -3,6 +3,7 @@
 FragTrap::FragTrap(/* args */)
 {
 	std::srand(std::time(NULL));
+	std::cout << "\e[1;35mFragTrap: Default ctor!" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name)
@@ -16,25 +17,43 @@ FragTrap::FragTrap(std::string name)
 	this->_ranged_attack_damage = 20;
 	this->_armor_damage_reduction = 5;
 	this->_name = name;
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m was created!" << std::endl;
+	std::cout << "\e[1;35mFragTrap: Default ctor!" << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const &copy) : ClapTrap(copy)
+FragTrap::FragTrap(FragTrap const &copy)
 {
 	std::srand(std::time(NULL));
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m was born!" << std::endl;
+	this->_hit_points = copy._hit_points;
+	this->_max_hit_points = copy._max_hit_points;
+	this->_energy_points = copy._energy_points;
+	this->_max_energy_points = copy._max_energy_points;
+	this->_melee_attack_damage = copy._melee_attack_damage;
+	this->_ranged_attack_damage = copy._ranged_attack_damage;
+	this->_armor_damage_reduction = copy._armor_damage_reduction;
+	this->_name = copy._name + "_copy";
+	std::cout << "\e[1;35mFragTrap: copy ctor!" << std::endl;
 }
 
 FragTrap	&FragTrap::operator=(FragTrap const &fragtrap)
 {
 	if (this != &fragtrap)
-		ClapTrap::operator=(fragtrap);
+	{
+		this->_hit_points = fragtrap._hit_points;
+		this->_max_hit_points = fragtrap._max_hit_points;
+		this->_energy_points = fragtrap._energy_points;
+		this->_max_energy_points = fragtrap._max_energy_points;
+		this->_melee_attack_damage = fragtrap._melee_attack_damage;
+		this->_ranged_attack_damage = fragtrap._ranged_attack_damage;
+		this->_armor_damage_reduction = fragtrap._armor_damage_reduction;
+		this->_name = fragtrap._name;
+	}
+	std::cout << "\e[1;35mFragTrap: Assignation operator!" << std::endl;
 	return *this;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "\e[1;35m" << this->_name << "\e[1;35m was killed!" << std::endl;
+	std::cout << "\e[1;35mFragTrap: dtor!" << std::endl;
 }
 
 void		FragTrap::rangedAttack(std::string const &target)

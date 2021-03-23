@@ -20,7 +20,7 @@ class ClapTrap
 		ClapTrap(/* args */);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &claptrap);
-		virtual~ClapTrap();
+		~ClapTrap();
 
 		ClapTrap		&operator=(ClapTrap const &claptrap);
 
