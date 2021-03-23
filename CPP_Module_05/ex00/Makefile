@@ -1,6 +1,6 @@
-NAME =		Poly
+NAME =		Bureacrat
 
-SRC =		main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+SRC =		main.cpp Bureacrat.cpp
 
 FLAGS =		-Wall -Werror -Wextra
 
