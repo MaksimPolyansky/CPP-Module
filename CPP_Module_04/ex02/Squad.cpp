@@ -41,7 +41,7 @@ Squad			&Squad::operator=(Squad const &sq)
 	{
 		this->_count = sq._count;
 		this->_units = sq._units;
-		if (this->_count != 0)
+		if (sq._count != 0)
 		{
 			if (this->_unit)
 			{
