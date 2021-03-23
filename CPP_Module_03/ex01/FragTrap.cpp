@@ -21,7 +21,7 @@ FragTrap::FragTrap(FragTrap const &copy)
 	this->_hit_points = copy._hit_points;
 	this->_energy_points = copy._energy_points;
 	this->_level = copy._level;
-	this->_name = copy._name + "_copy";
+	this->_name = copy._name;
 	std::cout << "\e[1;35m" << this->_name << "\e[1;35m was born!" << std::endl;
 }
 
