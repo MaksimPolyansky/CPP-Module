@@ -12,6 +12,10 @@ Bureacrat::Bureacrat(std::string name, int grade) : _name(name)
 
 Bureacrat::Bureacrat(Bureacrat const &copy) : _name(copy._name)
 {
+	if (copy._grade < 1)
+		throw Bureacrat::GradeTooHighException();
+	if (copy._grade > 150)
+		throw Bureacrat::GradeTooLowException();
 	this->_grade = copy._grade;
 }
 
