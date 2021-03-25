@@ -23,7 +23,7 @@ Bureacrat::~Bureacrat()
 Bureacrat			&Bureacrat::operator=(Bureacrat const &bu)
 {
 	if (this != &bu)
-		this->_grade = bu._grade;
+		*this = bu;
 	return *this;
 }
 
@@ -49,9 +49,30 @@ void				Bureacrat::gradePlus()
 		throw Bureacrat::GradeTooHighException();
 }
 
-void				Bureacrat::signForm(Form const &fo)
+void				Bureacrat::signForm(Form &fo)
 {
+	if (fo.getBoolean())
+	{
+		std::cout << "\e[1;33mYour " << fo.getName() << " has been signed!\e[0m" << std::endl;
+		std::cout << "\e[1;33mStatus: \e[0m" << fo << std::endl;
+	}
+	else
+	{
+		try
+		{
+			std::cout << "\e[1;33mYou signed the " << fo.getName() << "!\e[0m" << std::endl;
+			std::cout << "\e[1;33mStatus: \e[0m" << fo << std::endl;
+			fo.beSign(*this);
 
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "\e[1;33mYour grade is low!\e[0m" << std::endl;
+			std::cout << "\e[1;33mStatus: \e[0m" << fo << std::endl;
+			std::cerr << e.what() << '\n';
+		}
+
+	}
 }
 
 std::ostream		&operator<<(std::ostream &output, Bureacrat const &bu)

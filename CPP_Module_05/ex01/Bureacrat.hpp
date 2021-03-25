@@ -22,7 +22,7 @@ class Bureacrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("\e[1;91mGrade Too High Exception\e[0m");
+					return ("\e[1;91mBureacrat: Grade Too High Exception\e[0m");
 				}
 		};
 
@@ -31,7 +31,7 @@ class Bureacrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("\e[1;91mGrade Too Low Exception\e[0m");
+					return ("\e[1;91mBureacrat: Grade Too Low Exception\e[0m");
 				}
 		};
 
@@ -41,7 +41,7 @@ class Bureacrat
 		void				gradeMinus();
 		void				gradePlus();
 
-		void				signForm(Form const &fo);
+		void				signForm(Form &fo);
 };
 
 std::ostream				&operator<<(std::ostream &output, Bureacrat const &bu);
