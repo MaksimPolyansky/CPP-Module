@@ -15,7 +15,8 @@ AWeapon::AWeapon(AWeapon const &copy)
 }
 
 AWeapon::~AWeapon()
-{}
+{
+}
 
 AWeapon			&AWeapon::operator=(AWeapon const &aw)
 {

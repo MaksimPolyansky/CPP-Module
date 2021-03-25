@@ -15,7 +15,8 @@ Character::Character(Character const &copy)
 }
 
 Character::~Character()
-{}
+{
+}
 
 
 Character		&Character::operator=(Character const &ch)

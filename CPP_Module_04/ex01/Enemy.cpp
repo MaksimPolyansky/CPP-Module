@@ -37,8 +37,9 @@ int				Enemy::getHP() const
 
 void			Enemy::takeDamage(int damage)
 {
+	if (damage < 0)
+		return;
 	if (this->_hit_points - damage < 0)
 		delete this;
-	else
-		this->_hit_points -= damage;
+	this->_hit_points -= damage;
 }
