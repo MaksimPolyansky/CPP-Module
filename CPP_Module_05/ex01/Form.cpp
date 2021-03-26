@@ -31,7 +31,13 @@ Form::~Form()
 Form				&Form::operator=(Form const &form)
 {
 	if (this != &form)
-		*this = form;
+	{
+		if (form._grade_sign < 1 || form._grade_execute < 1)
+			throw Form::GradeTooHighException();
+		if (form._grade_sign > 150 || form._grade_execute > 150)
+			throw Form::GradeTooLowException();
+		this->_boolean = form._boolean;
+	}
 	return *this;
 }
 
