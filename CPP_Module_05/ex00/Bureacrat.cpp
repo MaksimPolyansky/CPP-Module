@@ -27,7 +27,13 @@ Bureacrat::~Bureacrat()
 Bureacrat			&Bureacrat::operator=(Bureacrat const &bu)
 {
 	if (this != &bu)
+	{
+		if (bu._grade < 1)
+			throw Bureacrat::GradeTooHighException();
+		if (bu._grade > 150)
+			throw Bureacrat::GradeTooLowException();
 		this->_grade = bu._grade;
+	}
 	return *this;
 }
 
