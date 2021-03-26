@@ -69,7 +69,6 @@ std::ostream				&operator<<(std::ostream &output, Form const &fo)
 	output << ": will sign only at a grade of ";
 	output << fo.getGradeSign();
 	output << ", and will be executed only at a grade of ";
-	output << fo.getGradeSign() << "!>\e[0m" << std::endl;
+	output << fo.getGradeExecute() << "!\e[0m" << std::endl;
 	return output;
 }
-

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Bureacrat.hpp"
+class Bureacrat;
 
 class Form
 {

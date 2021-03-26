@@ -1,6 +1,6 @@
-NAME =		Bureacrat
+NAME =		Form
 
-SRC =		main.cpp Bureacrat.cpp
+SRC =		main.cpp Bureacrat.cpp Form.cpp
 
 FLAGS =		-Wall -Werror -Wextra
 

@@ -1,5 +1,4 @@
 #include "Bureacrat.hpp"
-#include "Form.hpp"
 
 int		main()
 {
@@ -26,29 +25,22 @@ int		main()
 	std::cout << std::endl << "\e[1;34mThird test!\e[0m" << std::endl;
 	try
 	{
-		Bureacrat firstB = Bureacrat("Bur", 18);
-		Form firstF = Form("Contract", 0, 2);
+		Bureacrat firstB = Bureacrat("Bur", 12);
+		Form firstF = Form("Contract", 10, 90);
+		std::cout << std::endl;
+		firstB.signForm(firstF);
+		firstB.gradePlus();
+		firstB.signForm(firstF);
+		firstB.gradePlus();
+		firstB.signForm(firstF);
+		firstB.gradePlus();
+		firstB.signForm(firstF);
+		std::cout << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-/*	std::cout << std::endl << "\e[1;34mFourth test!\e[0m" << std::endl;
-	try
-	{
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	std::cout << std::endl << "\e[1;34mFifth test!\e[0m" << std::endl;
-	try
-	{
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}*/
 
 	return 0;
 }
