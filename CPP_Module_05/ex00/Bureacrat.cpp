@@ -37,6 +37,16 @@ Bureacrat			&Bureacrat::operator=(Bureacrat const &bu)
 	return *this;
 }
 
+const char* Bureacrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade Too High Exception");
+}
+
+const char* Bureacrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade Too Low Exception");
+}
+
 std::string			Bureacrat::getName() const
 {
 	return this->_name;
