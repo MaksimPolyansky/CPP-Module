@@ -80,15 +80,18 @@ void				Bureacrat::signForm(Form &fo)
 
 void				Bureacrat::executeForm(Form const &form)
 {
-	if (form.getBoolean())
+	try
 	{
-		if (this->getGrade() < form.getGradeExecute())
-			std::cout << "\e[1;33m<" << this->getName() << ">  executes " << form.getName() << "\e[0m" << std::endl;
-		else
-			std::cout << "\e[1;33mYour grade is low!\e[0m" << std::endl;
+		form.execute(*this);
 	}
-	else
-		std::cout << "\e[1;33mYour " << form.getName() << " is not signed!\e[0m" << std::endl;
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(const std::string& s)
+	{
+		std::cerr << s << '\n';
+	}
 }
 
 std::ostream		&operator<<(std::ostream &output, Bureacrat const &bu)

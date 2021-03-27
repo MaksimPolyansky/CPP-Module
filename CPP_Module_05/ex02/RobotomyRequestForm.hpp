@@ -2,6 +2,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 #include "Form.hpp"
+#include <ctime>
 
 class RobotomyRequestForm : public Form
 {
@@ -13,24 +14,8 @@ class RobotomyRequestForm : public Form
 		~RobotomyRequestForm();
 
 		RobotomyRequestForm		&operator=(RobotomyRequestForm const &ro);
+
+		void		executed() const;
 };
-
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form(target, 72, 45)
-{
-}
-
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)
-{
-}
-
-RobotomyRequestForm::~RobotomyRequestForm()
-{
-}
-
-RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &ro)
-{
-	if (this != &ro)
-		Form::operator=(ro);
-	return *this;}
 
 #endif

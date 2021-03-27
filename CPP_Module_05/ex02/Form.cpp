@@ -69,10 +69,23 @@ void				Form::beSign(Bureacrat const &bu)
 		this->_boolean = true;
 }
 
-void				Form::execute(Bureacrat const &executor) const
+void				Form::executed() const
 {}
 
-std::ostream				&operator<<(std::ostream &output, Form const &fo)
+void				Form::execute(Bureacrat const &executor) const
+{
+	if (this->getBoolean())
+	{
+		if (this->getGradeExecute() >= executor.getGrade())
+			this->executed();
+		else
+			throw Form::GradeTooLowException();
+	}
+	else
+		throw std::string("\e[1;33mYour " + this->getName() + " was not signed!\e[0m");
+}
+
+std::ostream		&operator<<(std::ostream &output, Form const &fo)
 {
 	output << "\e[1;36m" << fo.getName();
 	output << ": will sign only at a grade of ";

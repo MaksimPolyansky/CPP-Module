@@ -1,6 +1,6 @@
 NAME =		Form
 
-SRC =		main.cpp Bureacrat.cpp Form.cpp
+SRC =		main.cpp Bureacrat.cpp Form.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
 FLAGS =		-Wall -Werror -Wextra
 

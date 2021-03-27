@@ -46,6 +46,7 @@ class Form
 		void				beSign(Bureacrat const &bu);
 
 		void				execute(Bureacrat const &executor) const;
+		virtual void		executed() const;
 };
 
 std::ostream				&operator<<(std::ostream &output, Form const &fo);
