@@ -41,6 +41,16 @@ Form				&Form::operator=(Form const &form)
 	return *this;
 }
 
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("\e[1;92mForm: Grade Too High Exception\e[0m");
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("\e[1;92mForm: Grade Too Low Exception\e[0m");
+}
+
 std::string			Form::getName() const
 {
 	return this->_name;
@@ -68,9 +78,6 @@ void				Form::beSign(Bureacrat const &bu)
 	else
 		this->_boolean = true;
 }
-
-void				Form::executed() const
-{}
 
 void				Form::execute(Bureacrat const &executor) const
 {

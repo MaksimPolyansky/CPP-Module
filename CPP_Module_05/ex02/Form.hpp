@@ -23,19 +23,13 @@ class Form
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("\e[1;92mForm: Grade Too High Exception\e[0m");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("\e[1;92mForm: Grade Too Low Exception\e[0m");
-				}
+				virtual const char* what() const throw();
 		};
 
 		std::string			getName() const;
@@ -46,7 +40,7 @@ class Form
 		void				beSign(Bureacrat const &bu);
 
 		void				execute(Bureacrat const &executor) const;
-		virtual void		executed() const;
+		virtual void		executed() const = 0;
 };
 
 std::ostream				&operator<<(std::ostream &output, Form const &fo);

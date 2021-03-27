@@ -1,7 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : Form(target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : Form("ShrubberyCreationForm", 145, 137)
 {
+	this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy) : Form(copy)
@@ -22,7 +23,7 @@ void		ShrubberyCreationForm::executed() const
 {
 	std::ofstream	file;
 
-	file.open(this->getName() + "_shrubbery");
+	file.open(this->getTarget() + "_shrubbery");
 	if (file.is_open())
 	{
 		file.clear();
@@ -65,5 +66,10 @@ void		ShrubberyCreationForm::executed() const
 		file.close();
 	}
 	else
-		throw std::string("\e[0;92mI can't open " + this->getName() + "_shrubbery!\e[0m");
+		throw std::string("\e[0;92mI can't open " + this->getTarget() + "_shrubbery!\e[0m");
+}
+
+std::string	ShrubberyCreationForm::getTarget() const
+{
+	return this->_target;
 }

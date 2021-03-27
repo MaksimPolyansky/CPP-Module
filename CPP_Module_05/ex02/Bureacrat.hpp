@@ -21,19 +21,13 @@ class Bureacrat
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("\e[1;91mBureacrat: Grade Too High Exception\e[0m");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("\e[1;91mBureacrat: Grade Too Low Exception\e[0m");
-				}
+				virtual const char* what() const throw();
 		};
 
 		std::string			getName() const;

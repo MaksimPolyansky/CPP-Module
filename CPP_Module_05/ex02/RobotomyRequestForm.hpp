@@ -7,8 +7,9 @@
 class RobotomyRequestForm : public Form
 {
 	private:
-		/* data */
+		std::string				_target;
 	public:
+		RobotomyRequestForm();
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(RobotomyRequestForm const &copy);
 		~RobotomyRequestForm();
@@ -16,6 +17,7 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm		&operator=(RobotomyRequestForm const &ro);
 
 		void		executed() const;
+		std::string	getTarget() const;
 };
 
 #endif

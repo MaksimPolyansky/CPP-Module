@@ -7,8 +7,9 @@
 class ShrubberyCreationForm : public Form
 {
 	private:
-		/* data */
+		std::string				_target;
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string const target);
 		ShrubberyCreationForm(ShrubberyCreationForm const &copy);
 		virtual ~ShrubberyCreationForm();
@@ -16,6 +17,7 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm		&operator=(ShrubberyCreationForm const &sh);
 
 		void		executed() const;
+		std::string	getTarget() const;
 };
 
 #endif
