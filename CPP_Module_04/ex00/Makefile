@@ -1,6 +1,6 @@
 NAME =		Poly
 
-SRC =		Peon.cpp main.cpp Sorcerer.cpp Victim.cpp
+SRC =		Peon.cpp main.cpp Sorcerer.cpp Victim.cpp NotPeon.cpp
 
 FLAGS =		-Wall -Werror -Wextra
 
