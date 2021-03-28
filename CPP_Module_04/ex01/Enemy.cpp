@@ -39,7 +39,7 @@ void			Enemy::takeDamage(int damage)
 {
 	if (damage < 0)
 		return;
-	if (this->_hit_points - damage < 0)
+	if (this->_hit_points - damage <= 0)
 		delete this;
 	this->_hit_points -= damage;
 }

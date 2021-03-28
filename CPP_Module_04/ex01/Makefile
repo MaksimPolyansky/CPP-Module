@@ -1,6 +1,6 @@
 NAME =		Poly
 
-SRC =		main.cpp AWeapon.cpp RadScorpion.cpp Enemy.cpp PowerFist.cpp Character.cpp PlasmaRifle.cpp SuperMutant.cpp
+SRC =		AWeapon.cpp Character.cpp Enemy.cpp MegaMutant.cpp PlasmaRifle.cpp PowerFist.cpp RadScorpion.cpp SuperMutant.cpp main.cpp
 
 FLAGS =		-Wall -Werror -Wextra
 

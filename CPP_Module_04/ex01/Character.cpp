@@ -43,6 +43,8 @@ void			Character::equip(AWeapon *aw)
 
 void			Character::attack(Enemy *en)
 {
+	if (!this->_aweapon)
+		return;
 	if (this->_aweapon && this->getAP() < this->_aweapon->getAPCost())
 		std::cout << "\e[1;35mOoops... No AP!" << std::endl;
 	else if (en)
