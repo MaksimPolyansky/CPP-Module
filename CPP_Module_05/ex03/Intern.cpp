@@ -17,29 +17,35 @@ Intern			&Intern::operator=(Intern const &)
 	return *this;
 }
 
-Form			*makeForm(std::string const name, std::string const target)
+Form			*Intern::makeForm(std::string const name, std::string const target)
 {
 	Form			*arr[3];
-	arr[0] = new PresidentialPardonForm(target);
-	arr[1] = new RobotomyRequestForm(target);
-	arr[2] = new ShrubberyCreationForm(target);
+	arr[0] = this->getPresidential();
+	arr[1] = this->getRobotomy();
+	arr[2] = this->getShrubbery();
 	std::string		names[3] = {"PresidentialPardon", "RobotomyRequest", "ShrubberyCreation"};
 	for (int i = 0; i < 3; i++)
 	{
 		if (names[i] != name)
 		{
-			delete arr[i];
-			arr[i] = NULL;
-		}
-	}
-	for (size_t i = 0; i < 3; i++)
-	{
-		if (names[i] == name)
-		{
-			std::cout << "\e[1;96mIntern creates " << name[i] << "Form\e[0m" << std::endl;
 			return arr[i];
 		}
 	}
-	throw std::string("I don't know " + name + "Form");
+	throw std::string("\e[1;91mI don't know " + name + "\e[0m");
 	return NULL;
+}
+
+Form		*Intern::getPresidential(std::string const target)
+{
+	return new PresidentialPardonForm(target);
+}
+
+Form		*Intern::getRobotomy(std::string const target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+Form		*Intern::getShrubbery(std::string const target)
+{
+	return new ShrubberyCreationForm(target);
 }

@@ -2,53 +2,60 @@
 
 int		main()
 {
-	//std::cout << "\e[1;34mFirst test!\e[0m" << std::endl;
-	//try
-	//{
-	//	Bureacrat firstB = Bureacrat("Bob", 1);
-	//	Bureacrat firstB = Bureacrat("Bill", 150);
-	//	ShrubberyCreationForm firstF = ShrubberyCreationForm("Contract");
-	//	firstB.signForm(firstF);
-	//	firstB.executeForm(firstF);
-	//	std::cout << firstF << std::endl;
-	//	std::cout << firstB << std::endl;
-	//	firstB.gradePlus();
-	//	firstB.executeForm(firstF);
-	//}
-	//catch(const std::exception& e)
-	//{
-	//	std::cerr << e.what() << '\n';
-	//}
-	std::cout << std::endl << "\e[1;34mSecond test!\e[0m" << std::endl;
+	std::cout << "\e[1;34mFirst!\e[0m" << std::endl;
+
+	Bureacrat *firstA = new Bureacrat("Bob", 1);
+	Bureacrat *firstB = new Bureacrat("Bill", 150);
+	std::cout << std::endl;
+	Intern firstC;
+	std::cout << std::endl;
+	Form *firstD = firstC.makeForm("ShrubberyCreation", "Bykov");
+	std::cout << std::endl;
+	firstB->signForm(*firstD);
+	std::cout << *firstB << std::endl;
+	std::cout << std::endl;
+	firstA->signForm(*firstD);
+	std::cout << *firstA << std::endl;
+	std::cout << std::endl;
+	firstA->executeForm(*firstD);
+	std::cout << *firstA << std::endl;
+	std::cout << std::endl;
+
+	delete firstD;
+	delete firstB;
+	delete firstA;
+	std::cout << std::endl;
+
+	std::cout << std::endl << "\e[1;34mlobanov!\e[0m" << std::endl;
 	try
 	{
 		Intern lobanov;
-		lobanov.makeForm("ShrubberyCreationForm", "Vasya");
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
+		lobanov.makeForm("ShrubberyCreation1", "Bykov");
 	}
 	catch(const std::string& s)
 	{
 		std::cerr << s << std::endl;
 	}
-	//std::cout << std::endl << "\e[1;34mThird test!\e[0m" << std::endl;
-	//try
-	//{
-	//	Bureacrat thirdB = Bureacrat("Jora", 6);
-	//	PresidentialPardonForm thirdF = PresidentialPardonForm("Bukaka");
-	//	thirdB.signForm(thirdF);
-	//	thirdB.executeForm(thirdF);
-	//	std::cout << thirdB << std::endl;
-	//	std::cout << thirdF << std::endl;
-	//	thirdB.gradePlus();
-	//	thirdB.executeForm(thirdF);
-	//}
-	//catch(const std::exception& e)
-	//{
-	//	std::cerr << e.what() << '\n';
-	//}
+	std::cout << std::endl << "\e[1;34mromanenko!\e[0m" << std::endl;
+	try
+	{
+		Intern romanenko;
+		romanenko.makeForm("RobotomyRequest1", "Bykov");
+	}
+	catch(const std::string& s)
+	{
+		std::cerr << s << std::endl;
+	}
+	std::cout << std::endl << "\e[1;34mlevin!\e[0m" << std::endl;
+	try
+	{
+		Intern levin;
+		levin.makeForm("PresidentialPardon1", "Bykov");
+	}
+	catch(const std::string& s)
+	{
+		std::cerr << s << std::endl;
+	}
 
 	return 0;
 }
