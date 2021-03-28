@@ -8,8 +8,7 @@ class Character : public ICharacter
 {
 	private:
 		std::string				_name;
-		int						_size = 4;
-		AMateria				**_materis;
+		AMateria				*_materis[4];
 	public:
 		Character(/* args */);
 		Character(std::string name);

@@ -3,34 +3,35 @@
 Character::Character(std::string name)
 {
 	this->_name = name;
-	this->_materis = new AMateria*[this->_size];
+	this->_materis[0] = NULL;
+	this->_materis[1] = NULL;
+	this->_materis[2] = NULL;
+	this->_materis[3] = NULL;
 }
 
 Character::Character(Character const &copy)
 {
 	this->_name = copy._name;
-	if (copy._materis)
+	for (int i = 0; i < 4; ++i)
 	{
-		this->_materis = new AMateria*[this->_size];
-		for (int i = 0; i < this->_size; i++)
+		if (this->_materis[i] != NULL)
 		{
-			this->_materis[i] = copy._materis[i];
+			delete this->_materis[i];
+			this->_materis[i] = NULL;
 		}
 	}
-	else
-		this->_materis = NULL;
+	for (int i = 0; i < 4; i++)
+	{
+		this->_materis[i] = copy._materis[i]->clone();
+	}
 }
 
 Character::~Character()
 {
-	if (this->_materis)
+	for (int i = 0; i < 4; i++)
 	{
-		for (int i = 0; i < this->_size; i++)
-		{
-			if (this->_materis[i])
-				delete this->_materis[i];
-		}
-		delete[] this->_materis;
+		if (this->_materis[i])
+			delete this->_materis[i];
 	}
 }
 
@@ -39,17 +40,17 @@ Character			&Character::operator=(Character const &ch)
 	if (this != &ch)
 	{
 		this->_name = ch._name;
-		if (this->_materis)
+		for (size_t i = 0; i < 4; i++)
 		{
-			delete[] this->_materis;
-		}
-		if (ch._materis)
-		{
-			this->_materis = new AMateria*[this->_size];
-			for (int i = 0; i < this->_size; i++)
+			if (this->_materis[i])
 			{
-				this->_materis[i] = ch._materis[i];
+				delete this->_materis[i];
+				this->_materis[i] = NULL;
 			}
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			this->_materis[i] = ch._materis[i]->clone();
 		}
 	}
 	return *this;
@@ -80,6 +81,7 @@ void				Character::unequip(int idx)
 	{
 		if ((i + 1) < 4 && this->_materis[i + 1] == NULL)
 		{
+			delete this->_materis[i];
 			this->_materis[i] = NULL;
 			return;
 		}
@@ -87,6 +89,7 @@ void				Character::unequip(int idx)
 			this->_materis[i] = this->_materis[i + 1];
 		else
 		{
+			delete this->_materis[i];
 			this->_materis[i] = NULL;
 			return;
 		}
