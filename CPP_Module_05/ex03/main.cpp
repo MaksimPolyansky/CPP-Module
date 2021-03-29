@@ -12,7 +12,7 @@ int		main()
 	Form *firstD = firstC.makeForm("ShrubberyCreation", "Bykov");
 	std::cout << std::endl;
 	firstB->signForm(*firstD);
-	std::cout << *firstB << std::endl;
+	// std::cout << *firstB << std::endl;
 	std::cout << std::endl;
 	firstA->signForm(*firstD);
 	std::cout << *firstA << std::endl;
@@ -25,6 +25,54 @@ int		main()
 	delete firstB;
 	delete firstA;
 	std::cout << std::endl;
+
+
+
+	std::cout << "\e[1;34mSecond!\e[0m" << std::endl;
+
+	Bureacrat *secondA = new Bureacrat("Bob", 1);
+	std::cout << std::endl;
+	Intern secondC;
+	std::cout << std::endl;
+	Form *secondD = secondC.makeForm("PresidentialPardon", "Bykov");
+	std::cout << std::endl;
+	// std::cout << *firstB << std::endl;
+	std::cout << std::endl;
+	secondA->signForm(*secondD);
+	std::cout << *secondA << std::endl;
+	std::cout << std::endl;
+	secondA->executeForm(*firstD);
+	std::cout << *secondA << std::endl;
+	std::cout << std::endl;
+
+	delete secondD;
+	delete secondA;
+	std::cout << std::endl;
+
+
+	std::cout << "\e[1;34mThird!\e[0m" << std::endl;
+
+	Bureacrat *thirdA = new Bureacrat("Bob", 1);
+	std::cout << std::endl;
+	Intern thirdC;
+	std::cout << std::endl;
+	Form *thirdD = thirdC.makeForm("RobotomyRequest", "Bykov");
+	std::cout << std::endl;
+	// std::cout << *firstB << std::endl;
+	std::cout << std::endl;
+	thirdA->signForm(*thirdD);
+	std::cout << *secondA << std::endl;
+	std::cout << std::endl;
+	thirdA->executeForm(*firstD);
+	std::cout << *thirdA << std::endl;
+	std::cout << std::endl;
+
+	delete thirdD;
+	delete thirdA;
+	std::cout << std::endl;
+
+
+
 
 	std::cout << std::endl << "\e[1;34mlobanov!\e[0m" << std::endl;
 	try

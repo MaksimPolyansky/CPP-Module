@@ -18,10 +18,10 @@ class Intern
 
 		Intern		&operator=(Intern const &);
 
-		Form		*makeForm(std::string const name, std::string const target);
-		Form		*getPresidential(std::string const target);
-		Form		*getRobotomy(std::string const target);
-		Form		*getShrubbery(std::string const target);
+		static Form	*makeForm(std::string const &name, std::string const &target);
+		static Form	*getPresidential(std::string const &target);
+		static Form	*getRobotomy(std::string const &target);
+		static Form	*getShrubbery(std::string const &target);
 };
 
 #endif
