@@ -18,5 +18,13 @@ int		main(void)
 	std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
 	std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 
+	// Awesome		first(21);
+	// Awesome		second(42);
+
+	// ::swap(first, second);
+	// std::cout << "a = " << first << ", b = " << second << std::endl;
+	// std::cout << "min( a, b ) = " << ::min(first, second) << std::endl;
+	// std::cout << "max( a, b ) = " << ::max(first, second) << std::endl;
+
 	return 0;
 }
