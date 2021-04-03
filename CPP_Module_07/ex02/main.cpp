@@ -7,7 +7,7 @@ Array<T>::Array(/* args */) : _num(0)
 }
 
 template <typename T>
-Array<T>::Array(unsigned int &num) : _num(num)
+Array<T>::Array(unsigned int num) : _num(num)
 {
 	this->_arr = new T[num];
 }
@@ -57,7 +57,7 @@ Array<T>	&Array<T>::operator=(Array const &ar)
 }
 
 template <typename T>
-int			&Array<T>::operator[](int const index)
+T			&Array<T>::operator[](unsigned int const index)
 {
 	if (index >= 0 && index < this->_num)
 		return this->_arr[index];
@@ -73,6 +73,48 @@ unsigned int	Array<T>::size()
 
 int		main(void)
 {
+	std::srand(std::time(NULL));
+	Array<int>			arrI(21);
+	Array<std::string>	arrS(42);
+	Array<double>		arrD(7);
+	std::cout << "\e[1;37mFIRST!\e[0m" << std::endl;
+	try
+	{
+		for (size_t i = 0; i < 8; i++)
+		{
+			arrD[i] = std::rand() % 7 + 0.1;
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	for (size_t i = 0; i < 7; i++)
+	{
+		std::cout << arrD[i] << std::endl;
+	}
+	std::cout << "\e[1;37mSECOND!\e[0m" << std::endl;
+	for (size_t i = 0; i < 21; i++)
+	{
+		arrI[i] = std::rand() % 21;
+	}
+	for (size_t i = 0; i < 21; i++)
+	{
+		std::cout << arrI[i] << std::endl;
+	}
+	std::cout << "\e[1;37mTHIRD!\e[0m" << std::endl;
+	for (size_t i = 0; i < 42; i++)
+	{
+		arrS[i] = "LINE";
+		arrS[i] += (32 + std::rand() % 21);
+	}
+	for (size_t i = 0; i < 42; i++)
+	{
+		std::cout << arrS[i] << '\t';
+		if (i != 0 && i % 5 == 0)
+			std::cout << std::endl;
+	}
+	std::cout << std::endl;
 
 	return 0;
 }

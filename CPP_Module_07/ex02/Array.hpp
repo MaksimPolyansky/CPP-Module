@@ -11,7 +11,7 @@ class Array
 		T				*_arr;
 	public:
 		Array(/* args */);
-		Array(unsigned int &num);
+		Array(unsigned int num);
 		Array(Array const &copy);
 		~Array();
 
@@ -22,7 +22,7 @@ class Array
 		};
 
 		Array		&operator=(Array const &copy);
-		int			&operator[](int const index);
+		T			&operator[](unsigned int const index);
 
 		unsigned int	size();
 };
