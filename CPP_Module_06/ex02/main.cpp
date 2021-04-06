@@ -23,13 +23,56 @@ Base	*generate(void)
 		default:
 			break;
 	}
+	return NULL;
 }
 
-void	identify_from_pointer(Base *p);
-void	identify_from_reference(Base &p);
+void	identify_from_pointer(Base *p)
+{
+	if (dynamic_cast<A*>(p))
+		std::cout << "\e[1;96mA: I'm!\e[0m" << std::endl;
+	if (dynamic_cast<B*>(p))
+		std::cout << "\e[1;96mB: I'm!\e[0m" << std::endl;
+	if (dynamic_cast<C*>(p))
+		std::cout << "\e[1;96mC: I'm!\e[0m" << std::endl;
+}
+
+void	identify_from_reference(Base &p)
+{
+	try
+	{
+		A &a = dynamic_cast<A&>(p);
+		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+	}
+	catch(const std::exception& e)
+	{}
+	try
+	{
+		B &b = dynamic_cast<B&>(p);
+		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+	}
+	catch(const std::exception& e)
+	{}
+	try
+	{
+		C &c = dynamic_cast<C&>(p);
+		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+	}
+	catch(const std::exception& e)
+	{}
+}
 
 int		main()
 {
 	std::srand(std::time(NULL));
+
+	std::cout << "\e[1;93mCreate random Base!\e[0m" << std::endl;
+	Base	*base = generate();
+
+	std::cout << "\e[1;93mCheck pointer!\e[0m" << std::endl;
+	identify_from_pointer(base);
+
+	std::cout << "\e[1;93mCheck reference\e[0m" << std::endl;
+	identify_from_reference(*base);
+
 	return 0;
 }
