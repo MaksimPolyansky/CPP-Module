@@ -1,6 +1,7 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include "Base.hpp"
 
 Base	*generate(void)
 {
@@ -28,34 +29,34 @@ Base	*generate(void)
 
 void	identify_from_pointer(Base *p)
 {
-	if (dynamic_cast<A*>(p))
-		std::cout << "\e[1;96mA: I'm!\e[0m" << std::endl;
-	if (dynamic_cast<B*>(p))
-		std::cout << "\e[1;96mB: I'm!\e[0m" << std::endl;
-	if (dynamic_cast<C*>(p))
-		std::cout << "\e[1;96mC: I'm!\e[0m" << std::endl;
+	if (dynamic_cast<A*>(p) != NULL)
+		std::cout << "\e[1;96mA: I'm pointer!\e[0m" << std::endl;
+	if (dynamic_cast<B*>(p) != NULL)
+		std::cout << "\e[1;96mB: I'm pointer!\e[0m" << std::endl;
+	if (dynamic_cast<C*>(p) != NULL)
+		std::cout << "\e[1;96mC: I'm pointer!\e[0m" << std::endl;
 }
 
 void	identify_from_reference(Base &p)
 {
 	try
 	{
-		A &a = dynamic_cast<A&>(p);
-		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+		(void)dynamic_cast<A &>(p);
+		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
 	}
 	catch(const std::exception& e)
 	{}
 	try
 	{
-		B &b = dynamic_cast<B&>(p);
-		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+		(void)dynamic_cast<B&>(p);
+		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
 	}
 	catch(const std::exception& e)
 	{}
 	try
 	{
-		C &c = dynamic_cast<C&>(p);
-		std::cout << "\e[1;96mA: I'm! !\e[0m" << std::endl;
+		(void)dynamic_cast<C&>(p);
+		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
 	}
 	catch(const std::exception& e)
 	{}
