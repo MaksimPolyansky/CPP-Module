@@ -39,27 +39,12 @@ void	identify_from_pointer(Base *p)
 
 void	identify_from_reference(Base &p)
 {
-	try
-	{
-		(void)dynamic_cast<A &>(p);
+	if (dynamic_cast<A*>(&p) != NULL)
 		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
-	}
-	catch(const std::exception& e)
-	{}
-	try
-	{
-		(void)dynamic_cast<B&>(p);
-		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
-	}
-	catch(const std::exception& e)
-	{}
-	try
-	{
-		(void)dynamic_cast<C&>(p);
-		std::cout << "\e[1;96mA: I'm reference! !\e[0m" << std::endl;
-	}
-	catch(const std::exception& e)
-	{}
+	if (dynamic_cast<B*>(&p) != NULL)
+		std::cout << "\e[1;96mB: I'm reference! !\e[0m" << std::endl;
+	if (dynamic_cast<C*>(&p) != NULL)
+		std::cout << "\e[1;96mC: I'm reference! !\e[0m" << std::endl;
 }
 
 int		main()
