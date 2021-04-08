@@ -3,46 +3,71 @@
 
 struct	Data
 {
-    char	*line1;
-    int		num;
-    char	*line2;
+    std::string	line1;
+    int			num;
+    std::string	line2;
 };
 
 void			*serialize(void)
 {
-	char		*line = new char[sizeof(char*) * 2 + sizeof(int)];
+	char	*line = new char[sizeof(char*) * 2 + sizeof(int)];
 
-	for (size_t k = 0; k < (sizeof(char*) * 2 + sizeof(int)); k++)
+	for (size_t i = 0; i < static_cast<size_t>(sizeof(char*)); i++)
 	{
-		line[k] = 0;
+		line[i] = 97 + std::rand() % 26;
 	}
-	char		line1[16];
-	for (size_t i = 0; i < 16; i++)
+	
+	int		*num = new int(std::rand());
+	char	*num_char = reinterpret_cast<char*>(num);
+
+	for (size_t i = 0; i < static_cast<size_t>(sizeof(int)); i++)
 	{
-		line1[i] = (char)(97 + std::rand() % 26);
+		line[sizeof(char*) + i] = num_char[i];
 	}
-	std::cout << line1 << std::endl;
-	*reinterpret_cast<char**>(line) = line1;
-	std::cout << *reinterpret_cast<char**>(line) << std::endl;
-	*reinterpret_cast<int*>(line + sizeof(char*)) = std::rand();
-	std::cout << *reinterpret_cast<int*>(line + sizeof(char*)) << std::endl;
-	char		line2[16];
-	for (size_t i = 0; i < 16; i++)
+
+	delete num;
+
+	for (size_t i = 0; i < static_cast<size_t>(sizeof(char*)); i++)
 	{
-		line2[i] = 97 + std::rand() % 26;
+		line[sizeof(char*) + sizeof(int) + i] = 97 + std::rand() % 26;
 	}
-	*reinterpret_cast<char**>(line + sizeof(char*) + sizeof(int)) = line2;
-	std::cout << *reinterpret_cast<char**>(line + sizeof(char*) + sizeof(int)) << std::endl;
-	return static_cast<void*>(line);
+	
+	return reinterpret_cast<void*>(line);
 }
 
 Data			*deserialize(void *raw)
 {
 	Data		*data = new Data;
+	char		*line = reinterpret_cast<char*>(raw);
+	char		line1[static_cast<int>(sizeof(char*)) + 1];
 
-	data->line1 = *reinterpret_cast<char**>(raw);
-	data->num = *reinterpret_cast<int*>(static_cast<char*>(raw) + sizeof(char*));
-	data->line2 = *reinterpret_cast<char**>(static_cast<char*>(raw) + sizeof(char*) + sizeof(int));
+	size_t		i;
+	for (i = 0; i < static_cast<size_t>(sizeof(char*)); i++)
+	{
+		line1[i] = line[i];
+	}
+	line1[i] = '\0';
+	data->line1 = line1;
+	
+	char		num_char[static_cast<int>(sizeof(int)) + 1];
+
+	for (i = 0; i < static_cast<size_t>(sizeof(int)); i++)
+	{
+		num_char[i] = line[sizeof(char*) + i];
+	}
+	num_char[i] = '\0';
+
+	int			*num;
+	char		line2[static_cast<int>(sizeof(char*)) + 1];
+
+	num = reinterpret_cast<int*>(num_char);
+	data->num = *num;
+	for (i = 0; i < static_cast<size_t>(sizeof(char*)); i++)
+	{
+		line2[i] = line[sizeof(char*) + sizeof(int) + i];
+	}
+	line2[i] = '\0';
+	data->line2 = line2;
 
 	return data;
 }
