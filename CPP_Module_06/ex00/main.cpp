@@ -1,5 +1,5 @@
 #include <iostream>
-#include <limits>
+#include <climits>
 
 int		checkArg(std::string const &arg)
 {
@@ -9,8 +9,10 @@ int		checkArg(std::string const &arg)
 	(arg[0] == '-' && arg[index + 1] > 47 && arg[index + 1] < 58) ? index = 1 : index = 0;
 	while (index < arg.size() && arg[index] > 47 && arg[index] < 58)
 		index++;
-	if (((index > 0 && arg[0] != '-') || (index > 1 && arg[0] == '-')) && index < arg.size() && arg[index + 1] > 47 && arg[index + 1] < 58 && arg[index] == '.')
+	if (((index > 0 && arg[0] != '-') || (index > 1 && arg[0] == '-')) && index < arg.size() \
+		&& arg[index + 1] > 47 && arg[index + 1] < 58 && arg[index] == '.')
 	{
+		index++;
 		while (index < arg.size() && arg[index] > 47 && arg[index] < 58)
 			index++;
 		if (index < arg.size() && arg[index] == 'f')
