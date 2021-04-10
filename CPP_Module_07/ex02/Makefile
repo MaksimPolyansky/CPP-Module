@@ -2,7 +2,7 @@ NAME =		Array
 
 SRC =		main.cpp
 
-FLAGS =		-Wall -Werror -Wextra
+FLAGS =		-Wall -Werror -Wextra -std=c++98
 
 OBJ = 		$(SRC:%.cpp=%.o)
 
@@ -10,7 +10,7 @@ OBJ = 		$(SRC:%.cpp=%.o)
 
 all: $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp array.hpp
 	clang++ $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
