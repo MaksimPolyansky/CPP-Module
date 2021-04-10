@@ -1,5 +1,14 @@
 #include "iter.hpp"
 
+template <typename T>
+void	iter(T *array, size_t array_lenght, void (*func)(T const &))
+{
+	for (size_t i = 0; i < array_lenght; i++)
+	{
+		func(array[i]);
+	}
+}
+
 void	print_string(std::string const &str)
 {
 	std::cout << "\e[1;36m<" << str << ">\e[0m" << std::endl;

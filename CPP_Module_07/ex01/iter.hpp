@@ -3,15 +3,6 @@
 
 #include <iostream>
 
-template <typename T>
-void	iter(T *array, size_t array_lenght, void (*func)(T const &))
-{
-	for (size_t i = 0; i < array_lenght; i++)
-	{
-		func(array[i]);
-	}
-}
-
 // class Awesome
 // {
 // 	public:
