@@ -1,4 +1,5 @@
 #include "mutantstack.hpp"
+#include <ctime>
 
 int		main()
 {
@@ -33,5 +34,38 @@ int		main()
 		++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << "\e[1;33m____________________________________________________________________\e[0m" << std::endl << std::endl;
+
+	std::srand(std::time(NULL));
+	MutantStack<int>	first;
+	for (size_t i = 0; i < 21; i++)
+	{
+		first.push(std::rand());
+	}
+	MutantStack<int>::iterator	i = first.begin();
+	MutantStack<int>::iterator	ie = first.end();
+
+	++i;
+	--i;
+	while (i != ie)
+	{
+		std::cout << *i << std::endl;
+		++i;
+	}
+	std::cout << std::endl;
+
+	MutantStack<int>::reverse_iterator	ri = first.r_begin();
+	MutantStack<int>::reverse_iterator	rie = first.r_end();
+
+	++ri;
+	--ri;
+	while (ri != rie)
+	{
+		std::cout << *ri << std::endl;
+		++ri;
+	}
+
+
 	return 0;
 }
