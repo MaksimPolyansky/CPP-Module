@@ -2,6 +2,7 @@
 # define SPAN_HPP
 
 #include <iostream>
+#include <climits>
 #include <algorithm>
 #include <vector>
 
@@ -45,6 +46,15 @@ int		Span::shortestSpan()
 	if (this->_myVector.size() < 2)
 		throw std::string("Few arguments in Vector!");
 	std::sort(this->_myVector.begin(), this->_myVector.end());
+	int		shortes = INT_MAX;
+	std::vector<int>::iterator i = this->_myVector.begin();
+	i++;
+	for (; i != this->_myVector.end(); i++)
+	{
+		if (*i - *(i - 1) < shortes)
+			shortes = *i - *(i - 1);
+	}
+	return shortes;
 }
 
 int		Span::longestSpan()
